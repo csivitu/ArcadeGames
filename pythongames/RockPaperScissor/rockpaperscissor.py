@@ -4,15 +4,11 @@ import random
 def play_game() -> None:
     """Play one round of the game"""
     while True:
-        try:
-            games = int(input("How many games? "))
-            if games >= 11:
-                print("Sorry, but we aren't allowed to play that many.")
-            else:
-                break
-
-        except ValueError:
-            print("Please enter a number.")
+        games = int(input("How many games? "))
+        if games >= 11:
+            print("Sorry, but we aren't allowed to play that many.")
+        else:
+            break
 
     won_computer = 0
     won_human = 0
