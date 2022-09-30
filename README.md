@@ -8,10 +8,10 @@
     <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Arcade Games</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    A combination of basic Arcade Games.
     <br />
     <a href="https://github.com/csivitu/Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -54,9 +54,10 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Python](https://www.python.org/)
+* [JS](https://www.javascript.com/)
+* [JAVA](https://www.java.com/en/)
+* [Ruby](https://rubyonrails.org/)
 
 
 
