@@ -146,6 +146,7 @@ while running:
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
             game_over_text()
+            bullet_state = "not_ready"
             break
 
         enemyX[i] += enemyX_change[i]
