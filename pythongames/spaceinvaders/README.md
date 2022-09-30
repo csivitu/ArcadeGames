@@ -1,124 +1,42 @@
-[![csivit][csivitu-shield]][csivitu-url]
-[![Issues][issues-shield]][issues-url]
+# SPACEINVADERS
 
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/csivitu/Template">
-    <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">  <img src="https://user-images.githubusercontent.com/64297193/193189952-c1771741-fc60-4bf5-abc2-34926f3f566c.png" alt="Logo" width="80">
-  </a>
+Welcome to Spaceinvaders, This is a simple and fun game made with python
 
-  <h3 align="center">SPACEINVADERS</h3>
+<h3 > Introduction </h3>
 
-  <p align="center">
-    Space invaders is a simple game made using python.
-    <br />
-    <a href="https://github.com/csivitu/ArcadeGames/tree/master/pythongames/spaceinvaders"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/csivitu/ArcadeGames/tree/master/pythongames/spaceinvaders">View Demo</a>
-    ·
-    <a href="https://github.com/csivitu/ArcadeGames/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/csivitu/ArcadeGames/issues">Request Feature</a>
-  </p>
-</p>
+This game is a remake of 1978 shoot 'em up arcade game developed by Tomohiro Nishikado
+There will be 6 enemies, who constantly move in both x and y axis.
+![Game start environment](https://user-images.githubusercontent.com/64322879/193358567-89570f90-cc91-46c0-8e05-22ed7a5f63dd.jpg)
 
-<!-- TABLE OF CONTENTS -->
+Controls:
 
-## Table of Contents
-
--   [About the Project](#about-the-project)
-    -   [Built With](#built-with)
--   [Getting Started](#getting-started)
-    -   [Prerequisites](#prerequisites)
-    -   [Installation](#installation)
--   [Usage](#usage)
--   [Roadmap](#roadmap)
--   [Contributing](#contributing)
--   [License](#license)
--   [Contributors](#contributors-)
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-### Built With
-
--   [Python]()
-
-<!-- GETTING STARTED -->
-
-## Getting Started
+- Space Button - Fire
+- Left Arrow - Move Left
+- Right Arrow - Move Right
 
 
-### Installation
- 
-1. Clone the repo
-```sh
-git clone https://github.com/csivitu/ArcadeGames/
-```
-2. Start a new branch.
-```sh
-Check Contributing topic to find out about branching
-```
+When the space button is pressed the bullet is fired vertically, and if the distance between the bullet and the enemy is within a certain value, the enemy is killed    
+     
+If the enemies reach the spaceship, the game is over,and it has to be restarted.    
+![Game Over](https://user-images.githubusercontent.com/64322879/193359813-f45a4dfd-d1de-4545-852d-efb035c3ae03.jpg)
 
-3. And start your contributions.
+<h3 > Installation </h3 >
 
-### Prerequisites
+- Click on the link to my repository: My Repository
+- Click on the green "Code" button and copy the repository URL
+- Open your terminal and use the command git clone into the directory you would like to clone the repository
+- Open the main.py file in a python editor and run the file
 
-No prerequistes required.
+<h3 > Requirements </h3 >
 
-### Installation
+Python should be installed on your device.    
+Pygame library should be installed
 
-1. Clone the repo
+<h3 > Features </h3 >
 
-```sh
-git clone https://github.com/csivitu/WebDice.git
-```
+- The game has good sound design, different sounds for different actions
+- Enemies are spawned at random locations, with no patterns
 
-<!-- 2. Install NPM packages
+<h3 > Credits </h3 >
 
-```sh
-npm install
-``` -->
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Spaceinvaders is a fun game which is made with python, this is a remake of 1978 shoot 'em up arcade game developed by Tomohiro Nishikado.
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-See the [open issues](https://github.com/csivitu/ArcadeGames/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
-4. Push to the Branch (`git push -u origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[csivitu-shield]: https://img.shields.io/badge/csivitu-csivitu-blue
-[csivitu-url]: https://csivit.com
-[issues-shield]: https://img.shields.io/github/issues/csivitu/WebDice.svg?style=flat-square
-[issues-url]: https://github.com/csivitu/WebDice/issues
+This game was made with love by <a href="https://www.instagram.com/csivitu/"><strong>CSIVIT</strong></a>
