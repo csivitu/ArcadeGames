@@ -131,6 +131,11 @@ public class Hangman {
 				printDiscoveredLetters(discoveredLetters);
 				System.out.print("WHAT IS YOUR GUESS FOR THE WORD? ");
 				final String wordGuess = scan.next();
+				boolean result = wordGuess.matches("[a-zA-Z]+");
+        		if(result==false){
+            		System.out.println("ERROR: Word cannot include a number!");
+            		System.exit(0);
+        		}
 				if (wordGuess.toUpperCase().equals(word)) {
 					System.out.printf("RIGHT!!  IT TOOK YOU %s GUESSES!", totalWordGuesses);
 					return true;
