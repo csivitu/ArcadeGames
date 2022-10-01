@@ -68,9 +68,11 @@ def snake(timeLimit) :
     
     #snake's head direction it's pointing 
     def  up() : 
-        snake.direction = "up"
-    def down() : 
-        snake.direction = "down"
+        if snake.direction != "down":
+            snake.direction = "up"
+    def down() :
+        if snake.direction != "up":
+            snake.direction = "down"
     def  right() : 
         snake.direction = "right"
     def  left() : 
