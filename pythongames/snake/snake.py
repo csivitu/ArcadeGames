@@ -2,7 +2,9 @@
 """
 @author: Prabhav Mishra 
 """
-def snake() : 
+
+
+def snake(timeLimit) : 
     import turtle , random , time 
     count = 0 
     delay = 0.09
@@ -44,6 +46,14 @@ def snake() :
     pen.goto(0,+280)
     pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
     
+    #time[pen]
+    tpen = turtle.Turtle()
+    tpen.speed(0)
+    tpen.color('white')
+    tpen.penup() 
+    tpen.hideturtle() 
+    tpen.goto(+300,+280)
+    tpen.write("Time left :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
     
     #movement of the snake 
     def move() : 
@@ -74,8 +84,15 @@ def snake() :
     win.onkeypress(left, "a")
     win.onkeypress(right, "d")
        
+    startTime = time.time()
+    elapsedTime = 0
     while True : 
         win.update()
+        
+        if (timeLimit>=elapsedTime):
+            timex = timeLimit-elapsedTime 
+            tpen.clear() 
+            tpen.write("Time Left : {}  ".format(timex), align = "center" , font = ("Arial" , 14 , "bold" ))
       
         if snake.distance(food) <25:
            
@@ -141,11 +158,26 @@ def snake() :
               #refresh the score 
               pen.clear() 
               pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
-              score = 0 
+              score = 0
+        
+        # Timer
+        elapsedTime = int(time.time() - startTime)
+        if elapsedTime>timeLimit:
+            snake.goto(0,0) 
+            snake.direction = "stop"
+            snake.color("black")
+            food.color("black")
+            for body in snake_body : 
+                  body.goto(1000,1000) 
+              #clear the list 
+            snake_body.clear()
+            tpen.clear()
+            pen.clear()
+            pen.write("Game Over"  , align = "center" , font = ("Arial" , 14 , "bold" ))
           
         
         
-        
-snake()         
+timeLimit = 10
+snake(timeLimit)         
     
         
