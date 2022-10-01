@@ -96,6 +96,7 @@ function show_board() {
 
 // Main control section
 async function main() {
+
   print("TIC-TAC-TOE\n");
   print("CSI - VIT\n");
   print("\n");
@@ -128,6 +129,7 @@ async function main() {
     } else {
       print("Choose correct key 'X' or 'O'");
       check = true;
+
     }
   }
   while (1) {
