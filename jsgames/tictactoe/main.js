@@ -124,7 +124,7 @@ async function main() {
             } else{
                 ps = "O";
                 qs = "X";
-                first_time = false;
+                first_time = true;
             }
             check = false;
         }
