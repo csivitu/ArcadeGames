@@ -9,6 +9,7 @@ def snake(timeLimit) :
     count = 0 
     delay = 0.09
     score = 0
+    level=1
     #window 
     win = turtle.Screen() 
     win.title("__Snake__")
@@ -20,6 +21,7 @@ def snake(timeLimit) :
     snake = turtle.Turtle() 
     snake.speed(0) # animation speed to max 
     snake.shape("square")
+    snake_colors=["White","Red","Brown","Orange","White","Light Blue","Green","Blue","Yellow","Purple","Cyan"]
     snake.color("white") 
     snake.shapesize(stretch_wid = 1 , stretch_len = 1)
     snake.penup() #avoid lines while moving 
@@ -45,6 +47,15 @@ def snake(timeLimit) :
     pen.hideturtle() 
     pen.goto(0,+280)
     pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
+    
+    #level[lpen]
+    lpen= turtle.Turtle()
+    lpen.speed(0)
+    lpen.color("white")
+    lpen.penup()
+    lpen.hideturtle()
+    lpen.goto(0,+260)
+    lpen.write("Level :  " ,align = "center" , font = ("Arial" , 14 , "bold"))
     
     #time[pen]
     tpen = turtle.Turtle()
@@ -105,14 +116,23 @@ def snake(timeLimit) :
             
             #Display : Score + Updating it 
             score = score + 1 
-            pen.clear() 
-            pen.write("Score : {}  ".format(score), align = "center" , font = ("Arial" , 14 , "bold" ))
             
+            if score%10==0:
+                level=score//10+1
+                bg_colors=["Black","Cyan","Purple","Yellow","Blue", "Green","Light Blue","White","Orange","Brown","Red"]
+                win.bgcolor(bg_colors[level-1])
+                snake_colors=["White","Red","Brown","Orange","White","Light Blue","Green","Blue","Yellow","Purple","Cyan"]
+                snake.color(snake_colors[level-1])
+                
+            pen.clear() 
+            lpen.clear()
+            pen.write("Score : {}  ".format(score), align = "center" , font = ("Arial" , 14 , "bold" ))
+            lpen.write("Level : {} ".format(level) ,align = "center" , font = ("Arial" , 14 , "bold"))
             # add a segment to the body of the snake 
             body = turtle.Turtle()
             body.speed(0)
             body.shape("square")
-            body.color("white")
+            body.color(snake_colors[level-1])
             body.penup()
             snake_body.append(body)
        
@@ -159,7 +179,9 @@ def snake(timeLimit) :
               snake_body.clear()
               #refresh the score 
               pen.clear() 
+              lpen.clear()
               pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
+              lpen.write("Level :  " ,align = "center" , font = ("Arial" , 14 , "bold"))                      
               score = 0
         
         # Timer
