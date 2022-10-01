@@ -96,6 +96,8 @@ public class Hangman {
 				guessLetter = Character.toUpperCase(tmpRead.charAt(0));
 				if (lettersUsed.contains(guessLetter)) {
 					System.out.println("YOU GUESSED THAT LETTER BEFORE!");
+				} else if(guessLetter < 'A' || guessLetter > 'Z'){
+					System.out.println("ENTER AN ALPHABET");
 				} else {
 					lettersUsed.add(guessLetter);
 					totalWordGuesses++;
