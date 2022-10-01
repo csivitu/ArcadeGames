@@ -113,15 +113,25 @@ async function main() {
     print("\n");
     print("\n");
     print("DO YOU WANT 'X' OR 'O'");
-    str = await input();
-    if (str == "X") {
-        ps = "X";
-        qs = "O";
-        first_time = true;
-    } else {
-        ps = "O";
-        qs = "X";
-        first_time = false;
+    check = true;
+    while(check){
+        str = await input();
+        if (str=="O" || str=="X"){
+            if (str == "X") {
+                ps = "X";
+                qs = "O";
+                first_time = true;
+            } else{
+                ps = "O";
+                qs = "X";
+                first_time = false;
+            }
+            check = false;
+        }
+        else{
+            print("Choose correct key 'X' or 'O'");
+            check = true;
+        }
     }
     while (1) {
         if (!first_time) {
