@@ -132,7 +132,7 @@ def snake(timeLimit) :
             body = turtle.Turtle()
             body.speed(0)
             body.shape("square")
-            body.color(snake_colors[level-1)
+            body.color(snake_colors[level-1])
             body.penup()
             snake_body.append(body)
        
