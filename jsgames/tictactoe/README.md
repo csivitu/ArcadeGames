@@ -29,7 +29,7 @@ This game requires the User to have a Web Browser installed on their system.
 ### Installation
 
 ```sh
-git clone https://github.com/csivitu/WebDice.git
+git clone https://github.com/csivitu/ArcadeGames.git
 ```
 
 ### Features
