@@ -93,6 +93,11 @@ public class Hangman {
 
 				System.out.print("WHAT IS YOUR GUESS? ");
 				var tmpRead = scan.next();
+				boolean result = tmpRead.matches("[a-zA-Z]+");
+        		if(result==false){
+            		System.out.println("ERROR: Cannot take a number as a guess!");
+            		System.exit(0);
+        		}
 				guessLetter = Character.toUpperCase(tmpRead.charAt(0));
 				if (lettersUsed.contains(guessLetter)) {
 					System.out.println("YOU GUESSED THAT LETTER BEFORE!");
