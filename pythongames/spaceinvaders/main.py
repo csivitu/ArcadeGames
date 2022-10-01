@@ -165,6 +165,8 @@ while running:
             enemyX_change[i] = 4
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
+            warn = font.render("Speed changed", True, (255, 255, 255))
+            screen.blit(warn, (50, 50))
             enemyX_change[i] = -4
             enemyY[i] += enemyY_change[i]
 
