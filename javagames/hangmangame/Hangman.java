@@ -58,6 +58,7 @@ public class Hangman {
 		char[] letters;
 		char[] discoveredLetters;
 		int misses = 0;
+                boolean numeric=false;
 		Set<Character> lettersUsed = new LinkedHashSet<>();//LinkedHashSet maintains the order of characters inserted
 
 		String[][] hangmanPicture = new String[12][12];
@@ -89,10 +90,16 @@ public class Hangman {
 		while (misses < 10) {
 			while (!validNextGuess) {
 				printLettersUsed(lettersUsed);
-				printDiscoveredLetters(discoveredLetters);
-
+				printDiscoveredLetters(discoveredLetters); 
+                             
+                             
 				System.out.print("WHAT IS YOUR GUESS? ");
 				var tmpRead = scan.next();
+				 numeric = tmpRead.matches("-?\\d+(\\.\\d+)?");
+				 if(numeric)
+				 {
+				     System.out.println("Please enter a word");
+				 }
 				guessLetter = Character.toUpperCase(tmpRead.charAt(0));
 				if (lettersUsed.contains(guessLetter)) {
 					System.out.println("YOU GUESSED THAT LETTER BEFORE!");
