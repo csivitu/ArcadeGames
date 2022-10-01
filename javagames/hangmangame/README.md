@@ -38,7 +38,7 @@ The following body parts of the "hangman" are drawn:
 **Lose Condition:** All body parts of the "hangman" are drawn before the word is guessed.
 
 
-### Requirements
+### Requirments
 
 This game requires the User to have Java installed on their system.
 
