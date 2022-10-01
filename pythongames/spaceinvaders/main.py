@@ -98,6 +98,7 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
     else:
         return False
 
+pygame.key.set_repeat(10)
 
 # Game Loop
 running = True
