@@ -174,7 +174,7 @@ while running:
         bulletY = 480
         bullet_state = "ready"
 
-    if bullet_state is "fire":
+    if bullet_state is "fire" and enemyY[i]<=440:
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
