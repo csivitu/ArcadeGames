@@ -104,7 +104,7 @@ def snake(timeLimit) :
         
         if (timeLimit>=elapsedTime):
             timex = timeLimit-elapsedTime 
-            tpen.clear() 
+            tpen.clear()
             tpen.write("Time Left : {}  ".format(timex), align = "center" , font = ("Arial" , 14 , "bold" ))
       
         if snake.distance(food) <25:
@@ -113,6 +113,11 @@ def snake(timeLimit) :
             x = random.randint(-290, 290)
             y = random.randint(-290, 290)
             food.goto(x, y)
+            elapsedTime=0
+            timeLimit=10
+            startTime = time.time()
+            tpen.clear()
+            tpen.write("Time Left : {}  ".format(timex), align = "center" , font = ("Arial" , 14 , "bold" ))
             
             #Display : Score + Updating it 
             score = score + 1 
@@ -201,7 +206,7 @@ def snake(timeLimit) :
           
         
         
-timeLimit = 10
+timeLimit = 7
 snake(timeLimit)         
     
         
