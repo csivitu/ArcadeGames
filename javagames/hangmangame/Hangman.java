@@ -19,10 +19,36 @@ public class Hangman {
 		Scanner scan = new Scanner(System.in);
 
 		printIntro();
+		System.out.println("Enter your preferred level:\n1 (3-4 letter words)\n2 (5-6 letter words)\n3 (7-8 letter words)\n4 (9-11 letter words)\n5 (random)");
+		int level = scan.nextInt();
+		List<String> wordz = new ArrayList<String>();
+		if (level == 1){
+			for(int i=0; i<=13; i++){
+				wordz.add(words.get(i));
+			}
+		}
+		else if (level == 2){
+			for(int i=14; i<=26; i++){
+				wordz.add(words.get(i));
+			}
+		}
+		else if (level == 3){
+			for(int i=27; i<=37; i++){
+				wordz.add(words.get(i));
+			}
+		}
+		else if (level == 4){
+			for(int i=38; i<=49; i++){
+				wordz.add(words.get(i));
+			}
+		}
+		else{
+			wordz = words;
+		}
 
 		int[] usedWords = new int[50];
 		int roundNumber = 1;
-		int totalWords = words.size();
+		int totalWords = wordz.size();
 		boolean continueGame = false;
 
 		do {
@@ -37,7 +63,7 @@ public class Hangman {
 			} while (usedWords[randomWordIndex] == 1);
 			usedWords[randomWordIndex] = 1;
 
-			boolean youWon = playRound(scan, words.get(randomWordIndex - 1));
+			boolean youWon = playRound(scan, wordz.get(randomWordIndex - 1));
 			if (!youWon) {
 				System.out.print("\nYOU MISSED THAT ONE.  DO YOU WANT ANOTHER WORD? ");
 			} else {
