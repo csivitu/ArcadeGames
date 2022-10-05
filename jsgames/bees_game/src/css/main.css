@@ -1,0 +1,46 @@
+* {
+    outline: none;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background: rgb(46, 46, 46);
+}
+
+#leinwand {
+    background: rgb(192, 192, 192);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+#infos {
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-10%);
+    color: white;
+}
+
+#Message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.507);
+    display: none;
+}
+
+#Message span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    font-size: 1.4rem;
+    text-align: center;
+}
