@@ -9,7 +9,7 @@ function input() {
     return new Promise(function (resolve) {
         input_element = document.createElement("INPUT");
 
-        print("? ");
+        print(" ");
         input_element.setAttribute("type", "text");
         input_element.setAttribute("length", "50");
         document.getElementById("output").appendChild(input_element);
@@ -41,6 +41,14 @@ function who_win(piece) {
         print("I WIN, TURKEY!!!\n");
     } else if (piece == 1) {
         print("YOU BEAT ME!! GOOD GAME.\n");
+    }
+}
+
+function who_win_2(piece) {
+    if (piece == -1) {
+        print(p2+" Wins!!\n");
+    } else if (piece == 1) {
+        print(p1+" Wins!!\n");
     }
 }
 
@@ -96,6 +104,58 @@ function show_board() {
     return false;
 }
 
+function show_board_2() {
+    print("\n");
+    for (i = 1; i <= 9; i++) {
+        print(" ");
+        if (s[i] == -1) {
+            print(qs + " ");
+        } else if (s[i] == 0) {
+            print("  ");
+        } else {
+            print(ps + " ");
+        }
+        if (i == 3 || i == 6) {
+            print("\n");
+            print("---+---+---\n");
+        } else if (i != 9) {
+            print("!");
+        }
+    }
+    print("\n");
+    print("\n");
+    print("\n");
+    for (i = 1; i <= 7; i += 3) {
+        if (s[i] && s[i] == s[i + 1] && s[i] == s[i + 2]) {
+            who_win_2(s[i]);
+            return true;
+        }
+    }
+    for (i = 1; i <= 3; i++) {
+        if (s[i] && s[i] == s[i + 3] && s[i] == s[i + 6]) {
+            who_win_2(s[i]);
+            return true;
+        }
+    }
+    if (s[1] && s[1] == s[5] && s[1] == s[9]) {
+        who_win_2(s[1]);
+        return true;
+    }
+    if (s[3] && s[3] == s[5] && s[3] == s[7]) {
+        who_win_2(s[3]);
+        return true;
+    }
+    for (i = 1; i <= 9; i++) {
+        if (s[i] == 0)
+            break;
+    }
+    if (i > 9) {
+        print("IT'S A DRAW. THANK YOU.\n");
+        return true;
+    }
+    return false;
+}
+
 // Main control section
 async function main() {
     print("TIC-TAC-TOE\n");
@@ -103,185 +163,278 @@ async function main() {
     print("\n");
     print("\n");
     print("\n");
-    for (i = 1; i <= 9; i++)
-        s[i] = 0;
-    print("THE BOARD IS NUMBERED:\n");
-    print(" 1  2  3\n");
-    print(" 4  5  6\n");
-    print(" 7  8  9\n");
-    print("\n");
-    print("\n");
-    print("\n");
-    print("DO YOU WANT 'X' OR 'O'");
-    check = true;
-    while(check){
-        str = await input();
-        if (str=="O" || str=="X"){
-            if (str == "X") {
-                ps = "X";
-                qs = "O";
-                first_time = true;
-            } else{
-                ps = "O";
-                qs = "X";
-                first_time = true;
-            }
-            check = false;
-        }
-        else{
-            print("Choose correct key 'X' or 'O'");
-            check = true;
-        }
-    }
-    while (1) {
-        if (!first_time) {
-            g = -1;
-            h = 1;
-            if (s[5] == 0) {
-                s[5] = -1;
-            } else if (s[5] == 1 && s[1] == 0) {
-                s[1] = -1;
-            } else if (s[5] != 1 && s[2] == 1 && s[1] == 0 || s[5] != 1 && s[4] == 1 && s[1] == 0) {
-                s[1] = -1;
-            } else if (s[5] != 1 && s[6] == 1 && s[9] == 0 || s[5] != 1 && s[8] == 1 && s[9] == 0) {
-                s[9] = -1;
-            } else {
+    print("Choose game mode:\n");
+    print("1. Enter 1 for single player.\n");
+    print("2. Enter 2 for multiplayer.\n")
+    fl=true
+    while(fl){
+        mode = await input();
+        if (mode=="1" || mode=="2"){
+            if (mode == "1") {
+                for (i = 1; i <= 9; i++)
+                    s[i] = 0;
+                print("THE BOARD IS NUMBERED:\n");
+                print(" 1  2  3\n");
+                print(" 4  5  6\n");
+                print(" 7  8  9\n");
+                print("\n");
+                print("\n");
+                print("\n");
+                print("DO YOU WANT 'X' OR 'O'?");
+                check = true;
+                while(check){
+                    str = await input();
+                    if (str=="O" || str=="X" || str=="x" || str=="o"){
+                        if (str == "X" || str=="x") {
+                            ps = "X";
+                            qs = "O";
+                            first_time = true;
+                        } else{
+                            ps = "O";
+                            qs = "X";
+                            first_time = true;
+                        }
+                        check = false;
+                    }
+                    else{
+                        print("Choose correct key 'X' or 'O'.");
+                        check = true;
+                    }
+                }
                 while (1) {
-                    played = false;
-                    if (g == 1) {
-                        j = 3 * Math.floor((m - 1) / 3) + 1;
-                        if (3 * Math.floor((m - 1) / 3) + 1 == m)
-                            k = 1;
-                        if (3 * Math.floor((m - 1) / 3) + 2 == m)
-                            k = 2;
-                        if (3 * Math.floor((m - 1) / 3) + 3 == m)
-                            k = 3;
-                    } else {
-                        j = 1;
-                        k = 1;
+                    if (!first_time) {
+                        g = -1;
+                        h = 1;
+                        if (s[5] == 0) {
+                            s[5] = -1;
+                        } else if (s[5] == 1 && s[1] == 0) {
+                            s[1] = -1;
+                        } else if (s[5] != 1 && s[2] == 1 && s[1] == 0 || s[5] != 1 && s[4] == 1 && s[1] == 0) {
+                            s[1] = -1;
+                        } else if (s[5] != 1 && s[6] == 1 && s[9] == 0 || s[5] != 1 && s[8] == 1 && s[9] == 0) {
+                            s[9] = -1;
+                        } else {
+                            while (1) {
+                                played = false;
+                                if (g == 1) {
+                                    j = 3 * Math.floor((m - 1) / 3) + 1;
+                                    if (3 * Math.floor((m - 1) / 3) + 1 == m)
+                                        k = 1;
+                                    if (3 * Math.floor((m - 1) / 3) + 2 == m)
+                                        k = 2;
+                                    if (3 * Math.floor((m - 1) / 3) + 3 == m)
+                                        k = 3;
+                                } else {
+                                    j = 1;
+                                    k = 1;
+                                }
+                                while (1) {
+                                    if (s[j] == g) {
+                                        if (s[j + 2] == g) {
+                                            if (s[j + 1] == 0) {
+                                                s[j + 1] = -1;
+                                                played = true;
+                                                break;
+                                            }
+                                        } else {
+                                            if (s[j + 2] == 0 && s[j + 1] == g) {
+                                                s[j + 2] = -1;
+                                                played = true;
+                                                break;
+                                            }
+                                        }
+                                    } else {
+                                        if (s[j] != h && s[j + 2] == g && s[j + 1] == g) {
+                                            s[j] = -1;
+                                            played = true;
+                                            break;
+                                        }
+                                    }
+                                    if (s[k] == g) {
+                                        if (s[k + 6] == g) {
+                                            if (s[k + 3] == 0) {
+                                                s[k + 3] = -1;
+                                                played = true;
+                                                break;
+                                            }
+                                        } else {
+                                            if (s[k + 6] == 0 && s[k + 3] == g) {
+                                                s[k + 6] = -1;
+                                                played = true;
+                                                break;
+                                            }
+                                        }
+                                    } else {
+                                        if (s[k] != h && s[k + 6] == g && s[k + 3] == g) {
+                                            s[k] = -1;
+                                            played = true;
+                                            break;
+                                        }
+                                    }
+                                    if (g == 1)
+                                        break;
+                                    if (j == 7 && k == 3)
+                                        break;
+                                    k++;
+                                    if (k > 3) {
+                                        k = 1;
+                                        j += 3;
+                                        if (j > 7)
+                                            break;
+                                    }
+                                }
+                                if (!played) {
+                                    if (s[5] == g) {
+                                        if (s[3] == g && s[7] == 0) {
+                                            s[7] = -1;
+                                            played = true;
+                                        } else if (s[9] == g && s[1] == 0) {
+                                            s[1] = -1;
+                                            played = true;
+                                        } else if (s[7] == g && s[3] == 0) {
+                                            s[3] = -1;
+                                            played = true;
+                                        } else if (s[9] == 0 && s[1] == g) {
+                                            s[9] = -1;
+                                            played = true;
+                                        }
+                                    }
+                                    if (!played) {
+                                        if (g == -1) {
+                                            g = 1;
+                                            h = -1;
+                                        }
+                                    }
+                                }
+                                if (played)
+                                    break;
+                            }
+                            if (!played) {
+                                if (s[9] == 1 && s[3] == 0 && s[1] != 1) {
+                                    s[3] = -1;
+                                } else {
+                                    for (i = 2; i <= 9; i++) {
+                                        if (s[i] == 0) {
+                                            s[i] = -1;
+                                            break;
+                                        }
+                                    }
+                                    if (i > 9) {
+                                        s[1] = -1;
+                                    }
+                                }
+                            }
+                        }
+                        print("\n");
+                        print("THE COMPUTER MOVES TO...");
+                        if (show_board())
+                            break;
                     }
+                    first_time = false;
                     while (1) {
-                        if (s[j] == g) {
-                            if (s[j + 2] == g) {
-                                if (s[j + 1] == 0) {
-                                    s[j + 1] = -1;
-                                    played = true;
-                                    break;
-                                }
-                            } else {
-                                if (s[j + 2] == 0 && s[j + 1] == g) {
-                                    s[j + 2] = -1;
-                                    played = true;
-                                    break;
-                                }
-                            }
-                        } else {
-                            if (s[j] != h && s[j + 2] == g && s[j + 1] == g) {
-                                s[j] = -1;
-                                played = true;
-                                break;
-                            }
-                        }
-                        if (s[k] == g) {
-                            if (s[k + 6] == g) {
-                                if (s[k + 3] == 0) {
-                                    s[k + 3] = -1;
-                                    played = true;
-                                    break;
-                                }
-                            } else {
-                                if (s[k + 6] == 0 && s[k + 3] == g) {
-                                    s[k + 6] = -1;
-                                    played = true;
-                                    break;
-                                }
-                            }
-                        } else {
-                            if (s[k] != h && s[k + 6] == g && s[k + 3] == g) {
-                                s[k] = -1;
-                                played = true;
-                                break;
-                            }
-                        }
-                        if (g == 1)
+                        print("\n");
+                        print("WHERE DO YOU MOVE ?");
+                        m = parseInt(await input());
+                        if (m >= 1 && m <= 9 && s[m] == 0)
                             break;
-                        if (j == 7 && k == 3)
-                            break;
-                        k++;
-                        if (k > 3) {
-                            k = 1;
-                            j += 3;
-                            if (j > 7)
-                                break;
+                        else if(m >= 1 && m <= 9 && s[m] != 0){
+                        print("THAT SQUARE IS OCCUPIED.\n");
+                        print("\n");
+                        print("\n");
+                        }
+                        else{
+                            print("PLEASE ENTER A CORRECT POSITION!\n");
                         }
                     }
-                    if (!played) {
-                        if (s[5] == g) {
-                            if (s[3] == g && s[7] == 0) {
-                                s[7] = -1;
-                                played = true;
-                            } else if (s[9] == g && s[1] == 0) {
-                                s[1] = -1;
-                                played = true;
-                            } else if (s[7] == g && s[3] == 0) {
-                                s[3] = -1;
-                                played = true;
-                            } else if (s[9] == 0 && s[1] == g) {
-                                s[9] = -1;
-                                played = true;
-                            }
-                        }
-                        if (!played) {
-                            if (g == -1) {
-                                g = 1;
-                                h = -1;
-                            }
-                        }
-                    }
-                    if (played)
+                    g = 1;
+                    s[m] = 1;
+                    if (show_board())
                         break;
                 }
-                if (!played) {
-                    if (s[9] == 1 && s[3] == 0 && s[1] != 1) {
-                        s[3] = -1;
-                    } else {
-                        for (i = 2; i <= 9; i++) {
-                            if (s[i] == 0) {
-                                s[i] = -1;
-                                break;
-                            }
+}
+
+             else{
+                print("Enter Player 1 name: ");
+                p1= await input();
+                print("Enter Player 2 name: ");
+                p2=await input();
+
+                for (i = 1; i <= 9; i++)
+                    s[i] = 0;
+                print("THE BOARD IS NUMBERED:\n");
+                print(" 1  2  3\n");
+                print(" 4  5  6\n");
+                print(" 7  8  9\n");
+                print("\n");
+                print("\n");
+                print("\n");
+                print(p1+", choose from 'X' OR 'O'.");
+                check = true;
+                while(check){
+                    str = await input();
+                    if (str=="O" || str=="X" || str=="x" || str=="o"){
+                        if (str == "X" || str=="x") {
+                            ps = "X";
+                            qs = "O";
+                            first_time = true;
+                        } else{
+                            ps = "O";
+                            qs = "X";
+                            first_time = true;
                         }
-                        if (i > 9) {
-                            s[1] = -1;
-                        }
+                        check = false;
+                    }
+                    else{
+                        print("Choose correct key 'X' or 'O'.");
+                        check = true;
                     }
                 }
+                while(1){
+                while(1){
+                    print(p1+"'s move: ");
+                    m1=parseInt(await input());
+                    if (m1 >= 1 && m1 <= 9 && s[m1] == 0)
+                            break;
+                    else if(m1 >= 1 && m1 <= 9 && s[m1] != 0){
+                    print("THAT SQUARE IS OCCUPIED.\n");
+                    print("\n");
+                    print("\n");
+                    }
+                    else{
+                        print("PLEASE ENTER A CORRECT POSITION!\n");
+                    }
+                }
+                
+                s[m1] = 1;
+                if (show_board_2())
+                    break;
+                
+                    while(1){
+                        print(p2+"'s move: ");
+                        m2=parseInt(await input());
+                        if (m2 >= 1 && m2 <= 9 && s[m2] == 0)
+                                break;
+                        print("THAT SQUARE IS OCCUPIED.\n");
+                        print("\n");
+                        print("\n");
+                    }
+                    s[m2] = -1;
+                    if (show_board_2())
+                    break;
+                }
+
             }
-            print("\n");
-            print("THE COMPUTER MOVES TO...");
-            if (show_board())
-                break;
+            fl = false;
         }
-        first_time = false;
-        while (1) {
-            print("\n");
-            print("WHERE DO YOU MOVE");
-            m = parseInt(await input());
-            if (m == 0) {
-                print("THANKS FOR THE GAME.\n");
-                break;
-            }
-            if (m >= 1 && m <= 9 && s[m] == 0)
-                break;
-            print("THAT SQUARE IS OCCUPIED.\n");
-            print("\n");
-            print("\n");
+        else{
+            print("Choose correct option: 1 or 2.");
+            fl = true;
         }
-        g = 1;
-        s[m] = 1;
-        if (show_board())
-            break;
     }
-}
+    }
+
+
+
+    
 
 main();
