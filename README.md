@@ -94,6 +94,13 @@ Contributions are what make the open source community such an amazing place to b
 
 You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
+
+## Project Contributors 🏆🏆
+
+<a href="https://github.com/csivitu/ArcadeGames/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=csivitu/ArcadeGames" />
+  
+
 <!-- LICENSE -->
 ## License
 
