@@ -5,7 +5,9 @@
 
 
 def snake(timeLimit) : 
-    import turtle , random , time 
+    import turtle , random , time , pygame
+    from pygame import mixer
+    pygame.init()
     count = 0 
     delay = 0.09
     score = 0
@@ -16,7 +18,12 @@ def snake(timeLimit) :
     win.bgcolor("black")
     win.setup(width=800,height=600)
     win.tracer(0)
-    
+    play=0
+
+    # Sound
+    mixer.music.load('Snake-background.wav')
+    mixer.music.play(-1)
+
     #snake 
     snake = turtle.Turtle() 
     snake.speed(0) # animation speed to max 
@@ -118,7 +125,8 @@ def snake(timeLimit) :
             startTime = time.time()
             tpen.clear()
             tpen.write("Time Left : {}  ".format(timex), align = "center" , font = ("Arial" , 14 , "bold" ))
-            
+            food_sound= mixer.Sound('laser.wav')
+            food_sound.play()
             #Display : Score + Updating it 
             score = score + 1 
             
@@ -174,21 +182,27 @@ def snake(timeLimit) :
         #collision against snake body 
         for body in snake_body :
            if body.distance(snake) < 20 : 
-              time.sleep(1)
-              snake.goto(0,0) 
-              snake.direction = "stop" 
-           	#hide the body part of the snake 
-              for body in snake_body : 
-                  body.goto(1000,1000) 
-              #clear the list 
-              snake_body.clear()
-              #refresh the score 
-              pen.clear() 
-              lpen.clear()
-              pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
-              lpen.write("Level :  " ,align = "center" , font = ("Arial" , 14 , "bold"))                      
-              score = 0
-        
+                time.sleep(1)
+                snake.goto(0,0) 
+                snake.direction = "stop" 
+           	    #hide the body part of the snake 
+                for body in snake_body : 
+                    body.goto(1000,1000) 
+                    #clear the list 
+                    snake_body.clear()
+                    #play gameover sound
+                    mixer.music.stop()
+                if play==0:
+                    Gameover=mixer.Sound('Gameover.wav')
+                    Gameover.play()
+                    play+=1
+                #refresh the score 
+                pen.clear() 
+                lpen.clear()
+                pen.write("Score :   "  , align = "center" , font = ("Arial" , 14 , "bold" ))
+                lpen.write("Level :  " ,align = "center" , font = ("Arial" , 14 , "bold"))                      
+                score = 0
+                
         # Timer
         elapsedTime = int(time.time() - startTime)
         if elapsedTime>timeLimit:
@@ -197,16 +211,19 @@ def snake(timeLimit) :
             snake.color("black")
             food.color("black")
             for body in snake_body : 
-                  body.goto(1000,1000) 
-              #clear the list 
+                body.goto(1000,1000) 
+                #clear the list 
+            #play gameover sound
+            mixer.music.stop()
+            while play==0:
+                Gameover=mixer.Sound('Gameover.wav')
+                Gameover.play()
+                play+=1
             snake_body.clear()
             tpen.clear()
             pen.clear()
-            pen.write("Game Over"  , align = "center" , font = ("Arial" , 14 , "bold" ))
-          
+            pen.write("Game Over"  , align = "center" , font = ("Arial" , 14 , "bold" ))        
         
         
-timeLimit = 7
-snake(timeLimit)         
-    
-        
+timeLimit = 10
+snake(timeLimit)
