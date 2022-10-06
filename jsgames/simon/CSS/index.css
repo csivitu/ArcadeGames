@@ -1,0 +1,65 @@
+body{
+  font-family: 'Peralta', cursive;
+  background-color: #011F3F;
+}
+
+.main-header
+{
+  font-size: 8rem;
+  margin:5rem;
+  color:#FEF2BF;
+}
+
+.menu-button
+{
+  background-color: #FEF2BF;
+  color:#011F3F;
+  font-size: 2rem;
+  border:0px;
+  cursor: pointer;
+}
+
+.menu-button:hover{
+  color:#ffffff;
+  background-color: #011F3F;
+}
+
+.rules-button
+{
+  text-decoration: none;
+  color:#011F3F;
+}
+
+.tile{
+  display: inline-block;
+    width: 13rem;
+    height: 13rem;
+    margin: 2rem;
+    border: 0.5rem solid #000000;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.red{
+  background-color: red;
+}
+
+.yellow{
+  background-color: yellow;
+}
+
+.green{
+  background-color: green;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.board{
+  display:none;
+}
+
+.restart-menu{
+  display: none
+}
