@@ -63,3 +63,13 @@ body{
 .restart-menu{
   display: none
 }
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+.game-over{
+  background-color: red;
+  opacity:0.2;
+}
