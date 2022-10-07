@@ -6,7 +6,6 @@ public class RockPaperScissorGame {
     private static String userChoice, inputUser, inputCom;
     private static String[] RockPaperScissor = {"Rock", "Paper", "Scissor"};
     private static Random random = new Random();
-    private static boolean win = false;
     private static void beginPrint(){
         System.out.println("________________________");
         System.out.println("Rock Paper Scissor Game");
