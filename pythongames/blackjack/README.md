@@ -1,4 +1,4 @@
-# Python Games
+# Python Games - BlackJack
 
 Collection of some starter python game projects for beginners
 
@@ -8,7 +8,7 @@ Collection of some starter python game projects for beginners
 
 ```bash
 git clone https://github.com/csivitu/ArcadeGames
-cd python-games
+cd pythongames
 ```
 
 2. Install requirements
