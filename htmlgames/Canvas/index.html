@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div>
+     
+        <p>CANVAS</p>
+
+        <input title="Choose Colour" type="color" value="color" id="color" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+        <input type="number" min="1" title="Enter Stroke Width" id="stroke" placeholder="Enter stroke size" style="z-index:2; margin-bottom: 5px;" onchange="choose()">
+        <input type="button" title="Clear Canvas" style="z-index:2; margin-bottom: 5px;" value="Clear" onclick="clearAll()">
+        <button class="download" title="Save Canvas" onclick="downloadCanvas()">Save</button>
+        
+        
+        <div class="dropdown" style="float:left;">
+            <button title="See all colours u have used so far!" class="dropbtn" onclick="seecolour()">See colour</button>
+            <div class="dropdown-content" style="left:0;">
+                <div id="boxed" style="background-color: white;width:500px;white-space: initial;word-wrap: break-word"></div>
+        </div>
+        </div>
+
+        <div class="dropdown" style="float:left;">
+        <button class="dropbtn">Text</button>
+        <div class="dropdown-content" style="left:0;">
+            <input type="text" id="textenter" style="padding: 12px 3px;margin-left:11px" placeholder="Enter text" >
+            <input type="number" min=20 max=500 style="min-width: 165px" id="X" placeholder="position-X" >
+            <input type="number" min=20 max=1100 style="min-width: 165px" id="Y" placeholder="position-Y" >
+            <input type="color" value="color" id="color2" style="z-index:2; margin-bottom: 5px;min-width: 180px">        
+            <button class="button" style="min-width: 180px" onclick="addtext()">Add text !</button>
+        </div>
+        </div>
+        
+        <input type="file" title="Upload Canvas" id="imageLoader" name="imageLoader"/>
+        <canvas id="canvas""></canvas>
+    </div>
+    <script type="text/javascript">
+        var canvas = document.getElementById("canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var imageLoader = document.getElementById('imageLoader');
+        imageLoader.addEventListener('change', handleImage, false);
+        var ctx = canvas.getContext("2d");
+        let drawing = false
+        var arr =[];
+
+
+        //function for background fill
+        function myFunction() {     
+            var chooseColor2 = document.getElementById("color2").value;
+            console.log(chooseColor2)
+            ctx.fillStyle = chooseColor2
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+        }
+
+
+        var mouse = {x: 0, y: 0};
+        var last_mouse = {x: 0, y: 0};
+
+        /* Mouse Capturing Work */
+        canvas.addEventListener('mousemove', function(e) {
+            last_mouse.x = mouse.x;
+            last_mouse.y = mouse.y;
+
+            mouse.x = e.pageX - this.offsetLeft;
+            mouse.y = e.pageY - this.offsetTop;
+        }, false);
+
+
+
+        //function to choose color and stroke
+        function choose() {
+            var chooseColor = document.getElementById("color").value;
+            var chooseStroke = document.getElementById("stroke").value;
+            console.log(canvas.width, canvas.height)
+            return {
+                chooseColor,
+                chooseStroke
+            };
+        }
+
+        //function to change background
+        function choosebackground() {     
+            var chooseColor = document.getElementById("color2").value;
+            ctx.fillStyle = chooseColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height)
+        }
+
+        //function to clear the canvas
+        function clearAll(){
+            canvas.width = canvas.width;
+        }
+        
+      
+        function draw(e) {
+            if (drawing == false) return;
+            // ctx.lineWidth = 10; //default stroke width
+            ctx.strokeStyle = "red";	
+            let editor = choose();
+            ctx.lineWidth = editor.chooseStroke;
+            ctx.strokeStyle = editor.chooseColor;
+            console.log(editor.chooseColor)	
+            
+            if (!arr.includes(editor.chooseColor)){ 
+            arr.push(editor.chooseColor);
+            }
+            ctx.lineCap ="round";
+            ctx.lineJoin = 'round';
+            ctx.stroke();
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.moveTo(e.clientX, e.clientY);
+            ctx.beginPath();
+            
+        }
+          
+
+        function startDraw(e) {
+            drawing = true;
+            draw(e);
+        }
+
+        function overDraw() {
+            drawing = false;
+            ctx.beginPath();
+        }    
+    
+      
+        function downloadCanvas(){  
+            // get canvas data  
+            var image = canvas.toDataURL();  
+        
+            // create temporary link  
+            var tmpLink = document.createElement( 'a' );  
+            tmpLink.download = 'image.png'; // set the name of the download file 
+            tmpLink.href = image;  
+        
+            // temporarily add link to body and initiate the download  
+            document.body.appendChild( tmpLink );  
+            tmpLink.click();  
+            document.body.removeChild( tmpLink );  
+        }
+
+        function handleImage(e){
+            var reader = new FileReader();
+            reader.onload = function(event){
+                var img = new Image();
+                img.onload = function(){
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img,0,0);
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);     
+        }
+        
+        canvas.addEventListener('mousedown', function(e) {
+            canvas.addEventListener('mousemove', onPaint, false);
+        }, false);
+
+        canvas.addEventListener('mouseup', function() {
+            canvas.removeEventListener('mousemove', onPaint, false);
+        }, false);
+
+        var onPaint = function() {
+            ctx.beginPath();
+            ctx.moveTo(last_mouse.x, last_mouse.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.closePath();
+            ctx.stroke();
+        };
+
+
+        function addtext(){
+            var chooseColor = document.getElementById("color2").value;
+            var word=  document.getElementById("textenter").value;
+            var position_x =  document.getElementById("X").value;
+            var position_y =  document.getElementById("Y").value;
+            ctx.fillStyle = chooseColor;	
+            ctx.font = "30px Arial";
+            ctx.fillText(word,position_x,position_y);// height (10,500) width(10, 1100 )
+            
+
+        }
+
+        function saveBoard(e) {
+        ctx.save();   
+
+        var imageBase64String = canvas.toDataURL(); // get the base64 string from the canvas context
+
+        if (typeof (localStorage) !== "undefined") {
+            localStorage.setItem('imgCanvas',imageBase64String );
+        } else {
+            document.getElementById("save").innerHTML.dataURL = "Local Storage not supported";
+        }   
+        }
+        function restoreBoard() {
+
+
+            data = localStorage.getItem("imgCanvas");
+
+        if(data){
+            context.drawImage(data, 0, 0); // draw the base64 encoded image on the canvas
+        }else{
+            console.log('No data saved.')
+        }
+
+        }
+        function seecolour(){
+            document.getElementById("boxed").textContent = arr
+        
+        }
+
+
+
+        window.onload = function() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.addEventListener('mousedown', startDraw);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', overDraw);   
+    }
+
+    </script> 
+</body>
+</html>
