@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-
-"""
-CUBE
-
-Converted from BASIC to Python by Trevor Hobson
-"""
-
 import random
 from typing import Tuple
 
