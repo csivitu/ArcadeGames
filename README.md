@@ -12,7 +12,7 @@
   <h3 align="center">ArcadeGames</h3>
 
   <p align="center">
-    A basic data handling php website to add and delete user data to and from your database.
+    A Beginner Friendly repo consisting of basic Arcade Games.
     <br />
     <a href="https://github.com/csivitu/ArcadeGames">View Demo</a>
     ·
