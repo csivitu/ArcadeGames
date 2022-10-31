@@ -93,10 +93,10 @@ public class Bowling {
           while (true) {
 
             // Ball generator using mod '15' system
-
-            System.out.println("TYPE ROLL TO GET THE BALL GOING.");
-            System.out.print("? ");
-            scan.nextLine();
+            String val = "0";
+            while(!val.equals("ROLL")){
+              System.out.println("TYPE ROLL TO GET THE BALL GOING.");
+              val = scan.nextLine();}
 
             kk = 0;
             pinsDownNow = 0;

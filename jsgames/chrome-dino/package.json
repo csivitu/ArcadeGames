@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "prettier --check .",
+    "lint-fix": "prettier --write .",
+    "start": "reload"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2",
+    "reload": "^3.2.0"
+  },
+  "volta": {
+    "node": "16.15.0",
+    "yarn": "1.22.18"
+  }
+}

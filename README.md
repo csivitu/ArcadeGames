@@ -1,26 +1,24 @@
 [![csivit][csivitu-shield]][csivitu-url]
 [![Issues][issues-shield]][issues-url]
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors)
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/csivitu/Template">
-    <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">
+    <img src="https://csivit.com/images/favicon.png" alt="Logo" width="80">  <img src="https://user-images.githubusercontent.com/64297193/193189952-c1771741-fc60-4bf5-abc2-34926f3f566c.png" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">ArcadeGames</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
+    A Beginner Friendly repo consisting of basic Arcade Games.
     <br />
-    <a href="https://github.com/csivitu/Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/csivitu/Template">View Demo</a>
+    <a href="https://github.com/csivitu/ArcadeGames">View Demo</a>
     ·
-    <a href="https://github.com/csivitu/Template/issues">Report Bug</a>
+    <a href="https://github.com/csivitu/ArcadeGames/issues">Report Bug</a>
     ·
-    <a href="https://github.com/csivitu/Template/issues">Request Feature</a>
+    <a href="https://github.com/csivitu/ArcadeGames/issues">Request Feature</a>
   </p>
 </p>
 
@@ -32,73 +30,55 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
-* [Contributors](#contributors-)
+* [Contributors](#contributors)
 
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+ArcadeGames is fun website which consists of exciting games like SpaceInvaders, Rock Paper Scissors, Russian Roulette, Basketball, Tic Tac Toe, Hangman, Bowling and Black Jack.
+These are all basic CLI/GUI Based Arcade Games made using JS , Java , Python and Ruby
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`Template`
-
+Project Name - Arcade Games
 
 ### Built With
 
-* []()
-* []()
-* []()
+* Java
+* Python
+* Java Script
+* Ruby
 
+### Made By
 
+[Prabhav](https://github.com/3xpl0itk1t)
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
 
 ### Installation
  
 1. Clone the repo
 ```sh
-git clone https://github.com/csivitu/Template.git
+git clone https://github.com/csivitu/ArcadeGames/
 ```
-2. Install NPM packages
+2. Start a new branch.
 ```sh
-npm install
+Check Contributing topic to find out about branching
 ```
 
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
+3. And start your contributions.
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/csivitu/Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/csivitu/ArcadeGames/issues) for a list of proposed features (and known issues).
 
 
 
@@ -115,6 +95,13 @@ Contributions are what make the open source community such an amazing place to b
 
 You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
+
+## Contributors
+
+<a href="https://github.com/csivitu/ArcadeGames/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=csivitu/ArcadeGames" />
+  
+
 <!-- LICENSE -->
 ## License
 
@@ -128,4 +115,4 @@ Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more informati
 [csivitu-shield]: https://img.shields.io/badge/csivitu-csivitu-blue
 [csivitu-url]: https://csivit.com
 [issues-shield]: https://img.shields.io/github/issues/csivitu/Template.svg?style=flat-square
-[issues-url]: https://github.com/csivitu/Template/issues
+[issues-url]: https://github.com/csivitu/ArcadeGames/issues

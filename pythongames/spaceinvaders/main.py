@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import math
 import random
 
@@ -118,13 +119,23 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerX_change = 5
             if event.key == pygame.K_SPACE:
+                if bullet_state == "ready":
+                    bulletSound = mixer.Sound("laser.wav")
+                    bulletSound.play()
+                    # Get the current x cordinate of the spaceship
+                    bulletX = playerX
+                    fire_bullet(bulletX, bulletY)
+        
+        #holding spacebar for continuos shooting
+        kuys = pygame.key.get_pressed() 
+        if kuys[pygame.K_SPACE]:
                 if bullet_state is "ready":
                     bulletSound = mixer.Sound("laser.wav")
                     bulletSound.play()
                     # Get the current x cordinate of the spaceship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
-
+                    
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
@@ -145,6 +156,7 @@ while running:
         if enemyY[i] > 440:
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
+                bullet_state = NULL
             game_over_text()
             break
 
@@ -153,6 +165,8 @@ while running:
             enemyX_change[i] = 4
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
+            warn = font.render("Speed changed", True, (255, 255, 255))
+            screen.blit(warn, (50, 50))
             enemyX_change[i] = -4
             enemyY[i] += enemyY_change[i]
 
@@ -174,7 +188,7 @@ while running:
         bulletY = 480
         bullet_state = "ready"
 
-    if bullet_state is "fire":
+    if bullet_state == "fire":
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
